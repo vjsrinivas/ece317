@@ -1,2 +1,60 @@
-# ece317
-ECE317 - Honors Project Materials
+## ECE 317 Honors Project - MTCNN Testing
+------
+### Description:
+**Created By**: Vijay Rajagopal
+
+**[UPDATE FALL 2019]** - This notebook has been updated to support custom images and their corresponding ground truths. Look at the bottom of this section to get instructions on this.
+
+This is a notebook that is intended to help ECE 317 Honors students understand how the recognition model will be incorporated with their noise plugin as well as give an intro into graphing and visualizing the output from the recognition model. I intend to use pictures from **[WIDER FACE database](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/)** because it provides ground truths to compute average percision. 
+
+### Table of Contents:
+- [Variable Import](https://colab.research.google.com/drive/1gmbAv9aeR_Jfjbh5PAqCdMxzOZ4vidRy#scrollTo=KGOiurtt0ndI)
+   - This section is just for formatting purposes. It contains all the "global" variables that will be used
+      - IMG = filename of image being tested
+      - IMG_VAR = full file path
+      - MAT_GR_PATH = full path of matlab ground truth file from WIDER FACE dataset
+      - WIDER_CLASS = the category of images we're looking at in the dataset
+      - iter = the steps when increasing the noise intensity
+      - tot_total = the max noise intensity
+      - USE_WIDER = added to tell the notebook whether a given image being used is from WIDERFACE or a custom image
+      - IMG_CUSTOM_GT = used for generating mAPs from custom images
+- [MTCNN](https://colab.research.google.com/drive/1gmbAv9aeR_Jfjbh5PAqCdMxzOZ4vidRy#scrollTo=prqzy5sLlyEN)  [[github]](https://github.com/ipazc/mtcnn)
+   - This section setups up the Multi-Task Convolutional Neural Network (MTCNN) Face Detector
+   - Running the ["Setting up MTCNN"](https://colab.research.google.com/drive/1gmbAv9aeR_Jfjbh5PAqCdMxzOZ4vidRy#scrollTo=3BTl-yKQhfH9) section is **REQUIRED** for the rest of this demo to work!
+- [Plugin execution](https://colab.research.google.com/drive/1gmbAv9aeR_Jfjbh5PAqCdMxzOZ4vidRy#scrollTo=essEenDlng0R): **(IMPORTANT FOR ECE 317 STUDENTS)**
+    - This section  is an example of how you can test your own noise plugin alongside  the MTCNN
+    - It also computes different "intensities" of a noise plugin and stores it in an array
+    - **You should add your plugin code to a new cell in this section and modify the following cells to use your function**
+- [ Graph data](https://colab.research.google.com/drive/1gmbAv9aeR_Jfjbh5PAqCdMxzOZ4vidRy#scrollTo=tecfJwD3ueIq):
+    - This section takes the data from the "Plugin execution" section and graphs it
+    - It is intended to help jump start your own graphing responsiblities
+     
+### Getting Started:
+In case you do not have experience in using ipynb (Interactive Python Notebooks), this section will help you get settled with the basics.
+
+- **Running ipynbs:**
+   - These notebooks contain "cells", which are segments of code that you can run indepedently of one another. This allows a programmer to debug step-by-step as well as layout/visualize their code for other people
+   - Variables in each cell (as long as they are not in a function, or loop scope) will be **persistent** throughout the entire notebook when run.
+   - **To run a cell**, simply click on a cell and go to **Runtime > Run Selection** (Shortcut: Shift+Enter **highly recommended**)
+   - **To run ALL cells**, go to **Runtime > Run All**
+   
+   
+ - **Understanding Google Colab Environment**
+   - This ipynb is running off a service called **Google Colab**, which is a free service that lets users run ipynb files on Google hardware (GPU enhancement available too) for maximum of **12 hours of computing and 90 mins of unsupervised runtime** (which means you can not have this webpage open for 90 minutes and the current runtime will persist)
+   - Google Colab allows file upload and you can see the files of the runtime by clicking "Files" tab on the left-hand side of the webpage. If this is not present, there should be a little arrow that points to the right. This arrow should expand the tabs when clicked.
+   - It is important to know that **when runtimes are reset, files in that runtime are deleted**, so make sure you have a way of retrieving your data that you can't regenerate!
+   - ipynbs are stored in your **Google Drive** and can be exported to other enviroments
+   - If your runtime becomes corrupted or you need a fresh start, you can **restart a runtime** by going to **Runtime > Reset all Runtimes**
+   - **If you want a GPU to use**, go to **Runtime > Change Runtime Type** (THIS ACTION REQUIRES RESTARTING YOUR CURRENT RUNTIME)
+
+### Working with Custom Images:
+In this section, we'll be working with custom images and ground truths.
+In order to use a custom image with the rest of the notebook, you will need to generate a **ground truth** file. This file contains the cooordinates of each of the faces detected by a human (but since our circumstances are a bit different, we're going to use the coordinates generated by a detector).
+
+This [link](https://colab.research.google.com/drive/1knR5gToA3gWKVIpu9O2vbFcWa6HhxJfv#scrollTo=3BTl-yKQhfH9) will lead you another notebook that can be used to test/generate your own image and ground truth.
+
+After generating the ground truth in that notebook's runtime, you can download that file to your computer. This file then can be uploaded to this notebook's runtime.
+
+**N.B: For demo purposes, this notebook grabs a git repo that contains a ground truth file (ground_truth.txt). You will need to either rename your ground truth file and change the argument name in the cell that calls the function use_custom OR just delete that text file before uploading your own. (Latter heavily preferred).**
+
+After you have your ground truth file and custom image upload to this notebook's runtime, you can comment/uncomment the necessary lines in the **2nd cell**, which will control the flow of the rest of the notebook. Once that has been done, the rest of the notebook will function using your own image.
