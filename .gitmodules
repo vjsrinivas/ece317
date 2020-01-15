@@ -1,0 +1,3 @@
+[submodule "mtcnn"]
+	path = mtcnn
+	url = git@github.com:vjsrinivas/mtcnn.git
