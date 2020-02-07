@@ -1,4 +1,4 @@
-def generate_gt(name = 'gt.txt'):
+def generate_gt(results, name = 'gt.txt'):
   # Write out the coordinates to file:
   print('Writing out ground truth with name: {0}'.format(name))
   with open(name, "w+") as file:
