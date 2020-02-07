@@ -1,3 +1,24 @@
+# If you are using your own custom image, follow the format below for your ground truth file:
+# [int - represents the number of faces in the image]
+# [x1, y1, w, h] <---- face 1
+# [x1, y1, w, h] <---- face 2
+# ...
+# [x1, y1, w, h] <---- face 3
+
+def use_custom(custom_gt: str):
+  print("Reading ground truth...")
+  results = []
+  out = []
+  with open(custom_gt, "r") as file:
+    results = file.readlines()
+
+  for result in results:
+    cvt_result = result.split(" ")
+    bounding_box = list(map(int, cvt_result))
+    out.append(bounding_box)
+
+  return out
+
 def generate_gt(results, name = 'gt.txt'):
   # Write out the coordinates to file:
   print('Writing out ground truth with name: {0}'.format(name))
