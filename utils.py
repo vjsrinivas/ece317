@@ -47,12 +47,12 @@ def run_noise_function_example(IMG_VAR, uniform_noise, detector):
     rectColor = (255,0,0)
 
     for result in results:
-    bounding_box = result['box']
-    cv2.rectangle(org_img,
-                (bounding_box[0], bounding_box[1]),
-                (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
-                rectColor,
-                2)
+      bounding_box = result['box']
+      cv2.rectangle(org_img,
+                  (bounding_box[0], bounding_box[1]),
+                  (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
+                  rectColor,
+                  2)
 
     plt.figure(figsize=(10, 15))
     plt.imshow(org_img)
@@ -66,15 +66,15 @@ def show_gt(org_img, USE_WIDER, ):
 
     rectColor = (0,255,0)
     for truth in gt:
-    if(USE_WIDER):
-        bounding_box = truth.astype(int)
-    else:
-        bounding_box = truth
-    cv2.rectangle(gr_img,
-                (bounding_box[0], bounding_box[1]),
-                (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
-                rectColor,
-                3)
+      if(USE_WIDER):
+          bounding_box = truth.astype(int)
+      else:
+          bounding_box = truth
+      cv2.rectangle(gr_img,
+                  (bounding_box[0], bounding_box[1]),
+                  (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
+                  rectColor,
+                  3)
     
     print("Ground Truths visualized")
     print("Total face count in grouth truth: ", len(gt))
