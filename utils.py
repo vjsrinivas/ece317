@@ -24,12 +24,12 @@ def run_diagnostic(image_path, detector):
 
     rectColor = (255,0,0)
     for result in results:
-    bounding_box = result['box']
-    cv2.rectangle(img,
-                (bounding_box[0], bounding_box[1]),
-                (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
-                rectColor,
-                2)
+      bounding_box = result['box']
+      cv2.rectangle(img,
+                  (bounding_box[0], bounding_box[1]),
+                  (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
+                  rectColor,
+                  2)
 
     plt.figure(figsize=(10, 15))
     plt.imshow(img)
