@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 # If you are using your own custom image, follow the format below for your ground truth file:
 # [int - represents the number of faces in the image]
