@@ -108,7 +108,7 @@ def show_gt(org_img, USE_WIDER, ):
     plt.grid(None)
     plt.axis('off')
 
-def generateInteractiveGraphInst(imgList, result_pool, i: int, savingMode=False):
+def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, savingMode=False):
     currImg = imgList[i]
     rectColor = (0,255,0)
     for result in result_pool[i]:
