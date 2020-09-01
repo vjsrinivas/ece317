@@ -63,6 +63,7 @@ def run_diagnostic(image_path, detector):
     plt.axis('off')
 
     print("Detected: {0}".format(len(results)))
+    return len(results)
 
 def run_noise_function_example(IMG_VAR, uniform_noise, detector):
     org_img = cv2.imread(IMG_VAR)
