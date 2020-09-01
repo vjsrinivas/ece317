@@ -87,7 +87,7 @@ def run_noise_function_example(IMG_VAR, uniform_noise, detector):
     plt.axis('off')
     print("Detected {0} faces".format(len(results)))
 
-def show_gt(org_img, USE_WIDER):
+def show_gt(org_img, USE_WIDER, gt):
     # Display ground truths:
     gr_img = np.copy(org_img)
     rectColor = (0,255,0)
