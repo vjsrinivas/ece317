@@ -130,14 +130,11 @@ def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, saving
     plt.plot(AP_SCORES, '-o', markevery=[i])
     plt.tight_layout()
 
-    if(savingMode == False):
-        plt.show()
-
     if(savingMode):
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        buf.seek(0)
-        plt.ioff()
-        return buf
+        #buf = io.BytesIO()
+        #plt.savefig(buf, format='png')
+        #buf.seek(0)
+        #plt.ioff()
+        return plt
     else:
-        return None
+        plt.show()
