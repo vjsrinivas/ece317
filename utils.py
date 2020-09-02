@@ -137,7 +137,8 @@ def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, saving
         #plt.ioff()
         fig.canvas.draw()
         data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-        data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+        w,h = fig.canvas.get_width_height()
+        data = data.reshape((h,w,3))
         plt.close()
         return data
     else:
