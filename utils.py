@@ -125,7 +125,7 @@ def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, saving
     plt.title('Img Noise Intensity: %s' % i)
     plt.imshow(currImg)
     plt.subplot(2, 2, 2)
-    plt.title('AP Graph Performance: {}%'.format(AP_SCORES[i]))
+    plt.title('AP Graph Performance: {}%'.format(AP_SCORES[i]*100))
     plt.xlim(i-35, i+35)
     plt.plot(AP_SCORES, '-o', markevery=[i])
     plt.tight_layout()
@@ -138,6 +138,7 @@ def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, saving
         fig.canvas.draw()
         data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
         data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+        plt.close()
         return data
     else:
         plt.show()
