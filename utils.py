@@ -120,7 +120,7 @@ def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, saving
                     rectColor,
                     3)
 
-    plt.figure(figsize=(9,9))
+    fig = plt.figure(figsize=(9,9))
     plt.subplot(2, 2, 1)
     plt.title('Img Noise Intensity: %s' % i)
     plt.imshow(currImg)
@@ -135,6 +135,9 @@ def generateInteractiveGraphInst(AP_SCORES, imgList, result_pool, i: int, saving
         #plt.savefig(buf, format='png')
         #buf.seek(0)
         #plt.ioff()
-        return plt
+        fig.canvas.draw()
+        data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
+        data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+        return data
     else:
         plt.show()
