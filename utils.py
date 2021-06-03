@@ -21,6 +21,9 @@ def use_custom(custom_gt: str):
     cvt_result = result.split(" ")
     bounding_box = list(map(int, cvt_result))
     out.append(bounding_box)
+    
+  if len(cvt_result) > 4:
+    raise Exception("The file %s has incorrect file format. Please make sure each detection is in the following format: [x1,y1,w,h]")
 
   return out
 
